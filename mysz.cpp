@@ -37,7 +37,7 @@ QRectF Mysz::boundingRect() const
 QPainterPath Mysz::shape() const
 {
     QPainterPath path;
-    path.addRect(-10, -20, 20, 30);
+    path.addRect(-10, -20, 20, 20);
     return path;
 }
 
