@@ -1,6 +1,7 @@
 #include "gokno.h"
 
 #include <QtWidgets>
+#include <ctime>
 
 int main(int argc, char **argv)
 {
