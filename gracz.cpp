@@ -1,6 +1,6 @@
 #include "gracz.h"
 
-Gracz::Gracz(): Mysz(), x_Nitro(false)
+Gracz::Gracz(Gokno* gokno): Mysz(gokno), x_Nitro(false)
 {
 }
 

@@ -10,11 +10,12 @@ Gokno::Gokno()
         // budowanie sceny
     this->x_Scena = new QGraphicsScene;
     this->x_Scena->setSceneRect(-300, -300, 600, 600);
+    this->x_Mapa = new Mapa(this);
+    this->x_Mapa->Wybierz_Mape(PUDELKO);
 
         // tworzenie gracza
-    this->x_Gracz = new Gracz;
+    this->x_Gracz = new Gracz(this);
     this->x_Scena->addItem(this->x_Gracz);
-    this->Dodaj_Ser();
 
     this->setScene(this->x_Scena);
 }
@@ -73,9 +74,7 @@ void Gokno::keyReleaseEvent(QKeyEvent *event)
     }
 }
 
-void Gokno::Dodaj_Ser()
+QGraphicsScene* Gokno::Pobierz_Scene()
 {
-    Ser* ser = new Ser;
-    ser->setPos(250 - rand() % 500, 250 - rand() % 500);
-    this->x_Scena->addItem(ser);
+    return this->x_Scena;
 }

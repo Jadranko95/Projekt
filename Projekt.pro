@@ -16,12 +16,18 @@ SOURCES += main.cpp \
     gokno.cpp \
     mysz.cpp \
     gracz.cpp \
+    obiekt.cpp \
+    mapa.cpp \
+    sciana.cpp \
     ser.cpp
 
 HEADERS  += \
     gokno.h \
     mysz.h \
     gracz.h \
+    obiekt.h \
+    mapa.h \
+    sciana.h \
     ser.h
 
 RESOURCES += \

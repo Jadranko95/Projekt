@@ -1,7 +1,8 @@
 #include "mysz.h"
+#include "gokno.h"
 
-Mysz::Mysz(): x_Kat(0), x_Predkosc(0), x_Kierunek_Oczu(0),
-    x_Kolor(qrand() % 256, qrand() % 256, qrand() % 256)
+Mysz::Mysz(Gokno* gokno): Obiekt(MYSZ, gokno), x_Kat(0), x_Predkosc(0),
+    x_Kierunek_Oczu(0), x_Kolor(qrand() % 256, qrand() % 256, qrand() % 256)
 {
     this->setTransform(QTransform().rotate(qrand() % (360 * 16)), true);
     this->startTimer(1000 / 33);
@@ -15,6 +16,12 @@ void Mysz::Kolizja()
 {
     if(!this->scene()->collidingItems(this).isEmpty())
     {
+        /*QList<QGraphicsItem*> obiekty = this->scene()->collidingItems(this);
+
+        foreach(QGraphicsItem* obiekt, obiekty)
+            if(static_cast<Obiekt*>(obiekt)->Pobierz_Rodzaj() == SER)
+                this->x_Gokno->Dodaj_Ser();*/
+
         this->setPos(mapToParent(0, 15));
         this->x_Predkosc = 0;
     }
@@ -34,7 +41,7 @@ QPainterPath Mysz::shape() const
     return path;
 }
 
-void Mysz::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+void Mysz::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*)
 {
         // ciało
     painter->setBrush(x_Kolor);

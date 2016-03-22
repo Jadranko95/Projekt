@@ -17,7 +17,7 @@ class Gracz : public Mysz
 
     public:
 
-        Gracz();
+        Gracz(Gokno* gokno);
 
         void Start_Prawo();
         void Start_Lewo();

@@ -1,29 +1,24 @@
-#ifndef SER_H
-#define SER_H
+#ifndef SCIANA_H
+#define SCIANA_H
 
 #include "obiekt.h"
 
-class Ser: public Obiekt
+class Sciana : public Obiekt
 {
     Q_OBJECT
 
     private:
 
-        QRect x_Obszar;
-
-        void Kolizja();
+        QRect x_Wymiary;
 
     public:
 
-        Ser(Gokno* gokno);
+        Sciana(Gokno* gokno, QRect wymiary);
 
         QRectF boundingRect() const;
         QPainterPath shape() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
-
-        void Ustaw_Obszar(QRect obszar);
-        void Dodaj_Ser();
 
 };
 

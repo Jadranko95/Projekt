@@ -2,7 +2,7 @@
 #define GOKNO_H
 
 #include "gracz.h"
-#include "ser.h"
+#include "mapa.h"
 
 #include <QGraphicsView>
 #include <QScrollBar>
@@ -16,6 +16,7 @@ class Gokno : public QGraphicsView
 
         QGraphicsScene* x_Scena;
         Gracz* x_Gracz;
+        Mapa* x_Mapa;
 
     protected:
 
@@ -25,7 +26,7 @@ class Gokno : public QGraphicsView
     public:
 
         Gokno();
-        void Dodaj_Ser();
+        QGraphicsScene* Pobierz_Scene();
 
 };
 
