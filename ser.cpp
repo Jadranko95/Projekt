@@ -17,7 +17,7 @@ void Ser::Kolizja()
         {
                 // jeżeli jest myszą
             if(static_cast<Obiekt*>(obiekt)->Pobierz_Rodzaj() == MYSZ)
-                static_cast<Gracz*>(obiekt)->Stop_Predkosc();
+                ;//static_cast<Gracz*>(obiekt)->Stop_Predkosc();
         }
 
         this->Dodaj_Ser();

@@ -1,6 +1,7 @@
 #ifndef GRACZ_H
 #define GRACZ_H
 
+#include <QTimer>
 #include "mysz.h"
 
 class Gracz : public Mysz
@@ -10,6 +11,12 @@ class Gracz : public Mysz
     private:
 
         bool x_Nitro;
+        bool x_Mysz_Wypoczeta;
+        QTimer* x_Licznik_Zmeczenia;
+
+    private slots:
+
+        void Odpoczynek();
 
     protected:
 

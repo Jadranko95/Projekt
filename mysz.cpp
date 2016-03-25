@@ -16,14 +16,19 @@ void Mysz::Kolizja()
 {
     if(!this->scene()->collidingItems(this).isEmpty())
     {
-        /*QList<QGraphicsItem*> obiekty = this->scene()->collidingItems(this);
+        QList<QGraphicsItem*> obiekty = this->scene()->collidingItems(this);
 
         foreach(QGraphicsItem* obiekt, obiekty)
+        {
             if(static_cast<Obiekt*>(obiekt)->Pobierz_Rodzaj() == SER)
-                this->x_Gokno->Dodaj_Ser();*/
+                static_cast<Ser*>(obiekt)->Dodaj_Ser();
 
-        this->setPos(mapToParent(0, 15));
-        this->x_Predkosc = 0;
+            else
+            {
+                this->setPos(mapToParent(0, 15));
+                this->x_Predkosc = 0;
+            }
+        }
     }
 }
 

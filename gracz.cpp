@@ -1,7 +1,17 @@
 #include "gracz.h"
 
-Gracz::Gracz(Gokno* gokno): Mysz(gokno), x_Nitro(false)
+Gracz::Gracz(Gokno* gokno): Mysz(gokno),
+    x_Nitro(false), x_Mysz_Wypoczeta(true)
 {
+    this->x_Licznik_Zmeczenia = new QTimer;
+    QObject::connect(this->x_Licznik_Zmeczenia, SIGNAL(timeout()),
+                     this, SLOT(Odpoczynek()));
+}
+
+void Gracz::Odpoczynek()
+{
+    this->x_Mysz_Wypoczeta = !this->x_Mysz_Wypoczeta;
+    this->x_Licznik_Zmeczenia->stop();
 }
 
 void Gracz::timerEvent(QTimerEvent*)
@@ -9,10 +19,11 @@ void Gracz::timerEvent(QTimerEvent*)
     this->setTransform(QTransform().rotate(this->x_Kat), true);
     this->Kolizja();
 
-    if(this->x_Nitro)
-        this->setPos(mapToParent(0, -this->x_Predkosc * 3));
+    if(this->x_Mysz_Wypoczeta)
+        if(this->x_Nitro)
+            this->setPos(mapToParent(0, -this->x_Predkosc));
 
-    else this->setPos(mapToParent(0, -this->x_Predkosc));
+    this->setPos(mapToParent(0, -this->x_Predkosc));
 }
 
 
@@ -29,11 +40,18 @@ void Gracz::Start_Lewo()
 
 void Gracz::Start_Predkosc()
 {
-    this->x_Predkosc = 3;
+    this->x_Predkosc = 9;
 }
 
 void Gracz::Start_Nitro()
 {
+    if(this->x_Licznik_Zmeczenia->isActive())
+        return;
+
+        // mysz wypoczęta i licznik nieaktywny
+    if(this->x_Mysz_Wypoczeta)
+        this->x_Licznik_Zmeczenia->start(500);
+
     this->x_Nitro = true;
 }
 
@@ -51,5 +69,10 @@ void Gracz::Stop_Predkosc()
 
 void Gracz::Stop_Nitro()
 {
+        // mysz zmęczona i licznik nieaktywny
+    if(this->x_Mysz_Wypoczeta == false)
+        if(this->x_Licznik_Zmeczenia->isActive() == false)
+            this->x_Licznik_Zmeczenia->start(5000);
+
     this->x_Nitro = false;
 }
