@@ -45,10 +45,11 @@ void Gracz::Start_Predkosc()
 
 void Gracz::Start_Nitro()
 {
+        // jeżeli wykonuje bieg lub odpoczynek
     if(this->x_Licznik_Zmeczenia->isActive())
         return;
 
-        // mysz wypoczęta i licznik nieaktywny
+        // pełna sił na nitro
     if(this->x_Mysz_Wypoczeta)
         this->x_Licznik_Zmeczenia->start(500);
 
@@ -69,10 +70,20 @@ void Gracz::Stop_Predkosc()
 
 void Gracz::Stop_Nitro()
 {
-        // mysz zmęczona i licznik nieaktywny
+        // mysz biegła ile sił w nogach
     if(this->x_Mysz_Wypoczeta == false)
+    {
         if(this->x_Licznik_Zmeczenia->isActive() == false)
             this->x_Licznik_Zmeczenia->start(5000);
+    }
+    else
+    {
+            // mysz zatrzymała się przed zakończeniem
+            // czasu na nitro
+        this->x_Licznik_Zmeczenia->stop();
+        this->x_Mysz_Wypoczeta = false;
+        this->x_Licznik_Zmeczenia->start(5000);
+    }
 
     this->x_Nitro = false;
 }
