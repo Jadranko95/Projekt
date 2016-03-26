@@ -10,6 +10,7 @@ class Cien : public Obiekt
     private:
 
         QRect x_Wymiary;
+        QString x_Tlo;
 
     public:
 
@@ -19,6 +20,8 @@ class Cien : public Obiekt
         QPainterPath shape() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                    QWidget *widget);
+
+        void Ustaw_Tlo(QString obrazek);
 
 };
 

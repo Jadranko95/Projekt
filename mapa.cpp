@@ -88,6 +88,7 @@ void Mapa::Mapa_Pod_Stolem()
 
         // tworzenie cienia stołu
     Cien* cien_stolu = new Cien(this->x_Gokno, QRect(-400, -225, 800, 450));
+    cien_stolu->Ustaw_Tlo(":/images/stol.jpg");
     cien_stolu->setPos(150, -65);
     this->x_Scena->addItem(cien_stolu);
 
