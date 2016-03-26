@@ -3,6 +3,7 @@
 Cien::Cien(Gokno* gokno, QRect wymiary):
     Obiekt(CIEN, gokno), x_Wymiary(wymiary)
 {
+    this->setZValue(2);
 }
 
 QRectF Cien::boundingRect() const
@@ -32,7 +33,7 @@ void Cien::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
         painter->setPen(QColor(0, 0, 0, 0));
     }
 
-    painter->setOpacity(0.2);
+    painter->setOpacity(0.5);
     painter->drawRect(this->x_Wymiary);
 }
 
