@@ -2,11 +2,13 @@
 #define MAPA_H
 
 #include "sciana.h"
+#include "cien.h"
 #include "ser.h"
 
 enum RODZAJ_MAPY
 {
     PUDELKO,
+    POD_STOLEM,
     BRAK
 };
 
@@ -22,6 +24,7 @@ class Mapa
 
         void Wczytaj_Mape();
         void Mapa_Pudelko();
+        void Mapa_Pod_Stolem();
 
     public:
 

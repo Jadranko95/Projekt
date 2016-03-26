@@ -15,6 +15,7 @@ enum RODZAJ_OBIEKTU
     MYSZ,
     SER,
     SCIANA,
+    CIEN,
     OBIEKT
 };
 

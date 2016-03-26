@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     obiekt.cpp \
     mapa.cpp \
     sciana.cpp \
-    ser.cpp
+    ser.cpp \
+    cien.cpp
 
 HEADERS  += \
     gokno.h \
@@ -28,7 +29,8 @@ HEADERS  += \
     obiekt.h \
     mapa.h \
     sciana.h \
-    ser.h
+    ser.h \
+    cien.h
 
 RESOURCES += \
     mice.qrc

@@ -8,19 +8,28 @@ Ser::Ser(Gokno* gokno): Obiekt(SER, gokno)
 
 void Ser::Kolizja()
 {
-        // sprawdzanie kolizji
+    if(this->scene()->collidingItems(this).isEmpty())
+        return;
+
+        // pobranie wszystkich kolizji
     QList<QGraphicsItem*> obiekty = this->scene()->collidingItems(this);
 
-    if(!obiekty.isEmpty())
+        // przeszukiwanie wszystkich kolizji
+    foreach (QGraphicsItem* obiekt, obiekty)
     {
-        foreach (QGraphicsItem* obiekt, obiekty)
+            // kolizja z obiektem
+        switch(static_cast<Obiekt*>(obiekt)->Pobierz_Rodzaj())
         {
-                // jeżeli jest myszą
-            if(static_cast<Obiekt*>(obiekt)->Pobierz_Rodzaj() == MYSZ)
-                ;//static_cast<Gracz*>(obiekt)->Stop_Predkosc();
-        }
+            case MYSZ:
+                break;
 
-        this->Dodaj_Ser();
+            case CIEN:
+                break;
+
+            default: // inne przedmioty
+                this->Dodaj_Ser();
+                break;
+        }
     }
 }
 

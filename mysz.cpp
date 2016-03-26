@@ -2,9 +2,9 @@
 #include "gokno.h"
 
 Mysz::Mysz(Gokno* gokno): Obiekt(MYSZ, gokno), x_Kat(0), x_Predkosc(0),
-    x_Kierunek_Oczu(0), x_Kolor(qrand() % 256, qrand() % 256, qrand() % 256)
+    x_Kierunek_Oczu(0), x_Kolor(rand() % 256, rand() % 256, rand() % 256)
 {
-    this->setTransform(QTransform().rotate(qrand() % (360 * 16)), true);
+    this->setTransform(QTransform().rotate(rand() % (360 * 16)), true);
     this->startTimer(1000 / 33);
 }
 
@@ -14,20 +14,29 @@ void Mysz::timerEvent(QTimerEvent *)
 
 void Mysz::Kolizja()
 {
-    if(!this->scene()->collidingItems(this).isEmpty())
+    if(this->scene()->collidingItems(this).isEmpty())
+        return;
+
+        // pobranie wszystkich kolizji
+    QList<QGraphicsItem*> obiekty = this->scene()->collidingItems(this);
+
+        // przeszukiwanie wszystkich kolizji
+    foreach(QGraphicsItem* obiekt, obiekty)
     {
-        QList<QGraphicsItem*> obiekty = this->scene()->collidingItems(this);
-
-        foreach(QGraphicsItem* obiekt, obiekty)
+            // kolizja z obiektem
+        switch(static_cast<Obiekt*>(obiekt)->Pobierz_Rodzaj())
         {
-            if(static_cast<Obiekt*>(obiekt)->Pobierz_Rodzaj() == SER)
+            case SER:
                 static_cast<Ser*>(obiekt)->Dodaj_Ser();
+                break;
 
-            else
-            {
+            case CIEN: // po cieniu może chodzić
+                break;
+
+            default: // cofa i zatrzymuje mysz
                 this->setPos(mapToParent(0, 15));
                 this->x_Predkosc = 0;
-            }
+                break;
         }
     }
 }
@@ -66,7 +75,7 @@ void Mysz::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*)
     painter->drawEllipse(QRectF(4.0 + this->x_Kierunek_Oczu, -17, 4, 4));
 
         // uszy
-    painter->setBrush(scene()->collidingItems(this).isEmpty() ? Qt::darkYellow : Qt::red);
+    painter->setBrush(scene()->collidingItems(this).isEmpty() ? Qt::darkYellow : Qt::darkGray);
     painter->drawEllipse(-17, -12, 16, 16);
     painter->drawEllipse(1, -12, 16, 16);
 

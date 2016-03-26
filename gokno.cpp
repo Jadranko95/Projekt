@@ -1,17 +1,18 @@
 #include "gokno.h"
 
-Gokno::Gokno()
+Gokno::Gokno(): QGraphicsView()
 {
         // wstępne ustawienia okna
     this->setRenderHint(QPainter::Antialiasing);
     this->setCacheMode(QGraphicsView::CacheBackground);
     this->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+    this->resize(1280, 720);
 
         // budowanie sceny
     this->x_Scena = new QGraphicsScene;
-    this->x_Scena->setSceneRect(-300, -300, 600, 600);
+    this->x_Scena->setSceneRect(-625, -350, 1250, 700);
     this->x_Mapa = new Mapa(this);
-    this->x_Mapa->Wybierz_Mape(PUDELKO);
+    this->x_Mapa->Wybierz_Mape(POD_STOLEM);
 
         // tworzenie gracza
     this->x_Gracz = new Gracz(this);
