@@ -19,6 +19,6 @@ QPainterPath Sciana::shape() const
 
 void Sciana::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
-    painter->setBrush(Qt::darkGray);
+    painter->setBrush(Qt::black);
     painter->drawRect(this->x_Wymiary);
 }

@@ -11,6 +11,7 @@ Gokno::Gokno(): QGraphicsView()
         // budowanie sceny
     this->x_Scena = new QGraphicsScene;
     this->x_Scena->setSceneRect(-625, -350, 1250, 700);
+    this->x_Scena->setBackgroundBrush(QPixmap(":/images/tapeta.jpg"));
     this->x_Mapa = new Mapa(this);
     this->x_Mapa->Wybierz_Mape(POD_STOLEM);
 
