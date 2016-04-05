@@ -1,4 +1,5 @@
 #include "gokno.h"
+#include <QtWidgets>
 
 Gokno::Gokno(): QGraphicsView()
 {

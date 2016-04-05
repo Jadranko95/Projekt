@@ -1,4 +1,5 @@
 #include "gokno.h"
+#include "mokno.h"
 
 #include <QtWidgets>
 #include <ctime>
@@ -8,8 +9,8 @@ int main(int argc, char **argv)
     QApplication app(argc, argv);
     srand(time(NULL));
 
-    Gokno gokno;
-    gokno.show();
+    Mokno mokno;
+    mokno.show();
 
     return app.exec();
 }
