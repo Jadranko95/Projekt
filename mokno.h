@@ -19,7 +19,9 @@ class Mokno : public QMainWindow
         void testButton();
 
         void otwarcieSesjiSerwera();
-        void wyslijDoKlienta();
+        void otwarcieSesjiKlienta();
+        void wyslijWiadomosc();
+        void odczytajWiadomosc();
 
     private:
         QPushButton *server_button;
@@ -31,6 +33,7 @@ class Mokno : public QMainWindow
         QTcpSocket *tcpSocket;
         QNetworkSession *networkSession;
         quint16 blockSize;
+        QString ipAddress;
 
     public:
         explicit Mokno(QWidget *parent = 0);
